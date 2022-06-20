@@ -1,42 +1,20 @@
-# Nodejs CRUD api
+# Nodejs Remote Control
 ## Running
 ### Install
 ```bash
-git checkout crud-api && npm i
+git checkout remote-control && npm i
 ```
-### Start in development mode
+### Start both backend and frontend in development mode: App served @ `http://localhost:8181` with nodemon
 ```bash
 npm run start:dev
 ```
-### Start in production mode
+### Start both backend and frontend in production mode: App served @ `http://localhost:8181` without nodemon
 ```bash
-npm run start:prod
+npm run start
 ```
-### Start in production mode (single thread)
-```bash
-npm run start:prod-single
-```
-### Default port is 5555. You can change port in `.env` file.
+## Open frontend http://localhost:3000/
+## Default backend port is `8081`. Default frontend port is `3000`.
+### You can set ports in `.env` file.
 ```bash
 code .env
-```
-## Testing
-<!-- ### Supertest: 3 scenarios
-```bash
-npm run test
-```
-```bash
-npm run test2
-```
-```bash
-npm run test3
-``` -->
-
-### Postman config
-```bash
-code tests/postman/postman-config.json
-```
-### Running tests in browser http://localhost:8080/
-```bash
-cd tests && npm i && npm run start
 ```
