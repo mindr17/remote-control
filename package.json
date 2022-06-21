@@ -4,12 +4,10 @@
   "main": "index.ts",
   "scripts": {
     "start": "rm -rf ./dist/ && npx tsc --rootDir src --outDir dist && node ./dist/index.js",
-    "dev": "npx ts-node-dev ./src/index.ts",
-    "front": "node ./front/",
-    "dev-old": "npx nodemon ./src/index.ts",
-    "test": "npx nodemon ./tests/supertest/test.index.ts",
-    "test2": "npx nodemon ./tests/supertest/test2.index.ts",
-    "test3": "npx nodemon ./tests/supertest/test3.index.ts",
+    "dev": "npx ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "front": "ts-node ./src/startFront.ts",
+    "back-nodemon": "npx nodemon ./src/startBack.ts",
+    "dev-nodemon": "npx nodemon ./src/index.ts",
     "build": "rm -rf ./dist/ && npx tsc --rootDir src --outDir dist",
     "lint": "npx eslint src/ --ext ts"
   },

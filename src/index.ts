@@ -1,19 +1,13 @@
-import 'dotenv/config';
-import { frontHttpServer } from './modules/httpServers/frontHttpServer';
-import { backHttpServer } from './modules/httpServers/backHttpServer';
+import WebSocket, { WebSocketServer, createWebSocketStream } from 'ws';
 
-const BACK_PORT: string = process.env.BACK_PORT || '8081';
-const FRONT_PORT: string = process.env.FRONT_PORT || '3000';
+const startBack = () => {
+  const wss = new WebSocketServer({ port: 8081 });
 
-const main = (): void => {
-  backHttpServer.listen(
-    BACK_PORT,
-    () => console.log(`Backend listening on port ${BACK_PORT}`)
-    );
-    
-  frontHttpServer.listen(
-    FRONT_PORT,
-    () => console.log(`Frontend listening on port ${FRONT_PORT}\nOpen http://localhost:3000/ in browser (ctrl + mouseBtnLeft click on the address)`)
-  );
+  wss.on('connection', function connection(ws) {
+    const duplex = createWebSocketStream(ws, { encoding: 'utf8' });
+    duplex.pipe(process.stdout);
+
+    process.stdin.pipe(duplex);
+  });
 };
-main();
+startBack();
