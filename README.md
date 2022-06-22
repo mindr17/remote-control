@@ -4,11 +4,11 @@
 ```bash
 git checkout remote-control && npm i
 ```
-### Start both backend and frontend in development mode: App served @ `http://localhost:8181` with nodemon
+### Start both backend and frontend in development mode: App served @ `http://localhost:8180` with nodemon
 ```bash
-npm run start:dev
+npm run dev
 ```
-### Start both backend and frontend in production mode: App served @ `http://localhost:8181` without nodemon
+### Start both backend and frontend in production mode: App served @ `http://localhost:8180` without nodemon
 ```bash
 npm run start
 ```
