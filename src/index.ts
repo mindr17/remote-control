@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import 'dotenv/config';
 import { startFront } from './startFront';
 import { WebSocketServer, createWebSocketStream } from 'ws';
@@ -18,19 +19,35 @@ const startBack = (): void => {
       decodeStrings: false,
     });
 
+
+    // const buf = Buffer.from('hello world', 'utf8');
+
+    // console.log(buf.toString('hex'));
+    // // Prints: 68656c6c6f20776f726c64
+    // console.log(buf.toString('base64'));
+
+    // duplex.write(buf.toString('base64'));
+    // duplex.write(buf.toString('hex'));
+
+    // const msg = Buffer.from("Hello World").toString('base64')
+    // duplex.write(msg);
+
+    // const buff = new Buffer.from(JSON.stringify(newConfigFile, null, 2));
+    // const base64Config = buff.toString("base64");
+
     for await (const chunk of duplex) {
       try {
         const [operationName, ...args] = chunk.split(' ');
         const operation = commands[operationName];
-        await operation(args);
-        duplex.write('123 asiodn asd');
-        // ws.send('123asd asdasd as das dsad');
+        await operation(duplex, args);
       } catch (err) {
         console.error(err);
       }
     }
-    // duplex.pipe(process.stdout);
-    // process.stdin.pipe(duplex);
+
+    ws.on('close', () => {
+      duplex.destroy()
+    })
   });
 };
 startBack();
