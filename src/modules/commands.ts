@@ -51,11 +51,6 @@ export const commands = {
 
   async prnt_scrn (duplex, args) {
     const image = await printScreen(duplex, args);
-    
-    const buff = Buffer.from(image);
-    const base64data = buff.toString('base64');
-    duplex.write(base64msg);
-
     duplex.write(`prnt_scrn ${image}\0`);
   },
 };
