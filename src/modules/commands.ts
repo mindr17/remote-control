@@ -3,6 +3,7 @@ import { getMousePos } from "robotjs";
 import { drawCircle } from "./draw/drawCircle";
 import { drawRectangle } from "./draw/drawRectangle";
 import { drawSquare } from "./draw/drawSquare";
+import { printScreen } from "./printScreen";
 
 export const commands = {
   mouse_up(
@@ -48,8 +49,13 @@ export const commands = {
     duplex.write(`draw_square\0`);
   },
 
-  prnt_scrn(duplex, args) {
+  async prnt_scrn (duplex, args) {
+    const image = await printScreen(duplex, args);
     
-    duplex.write(`prnt_scrn\0`);
+    const buff = Buffer.from(image);
+    const base64data = buff.toString('base64');
+    duplex.write(base64msg);
+
+    duplex.write(`prnt_scrn ${image}\0`);
   },
 };

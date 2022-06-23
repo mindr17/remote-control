@@ -18,7 +18,7 @@ const startBack = (): void => {
     });
     
     console.log(
-      `New client connected!\nDuplex stream created with encoding: 'utf8', decodeStrings: false,`
+      `New client connected!\nDuplex stream created with encoding: 'utf8', decodeStrings: false,\n`
     );
     
     for await (const chunk of duplex) {

@@ -1,4 +1,3 @@
-
 import { dragMouse, getMousePos, mouseClick, mouseToggle } from "robotjs";
 import { wait } from "../util";
 
