@@ -4,17 +4,17 @@
 ```bash
 git checkout remote-control && npm i
 ```
-### Start both backend and frontend in development mode: App served @ `http://localhost:8180` with nodemon
+### Start both backend and frontend in development mode: App served @ `http://localhost:8080` with nodemon
 ```bash
 npm run dev
 ```
-### Start both backend and frontend in production mode: App served @ `http://localhost:8180` without nodemon
+### Start both backend and frontend in production mode: App served @ `http://localhost:8080` without nodemon
 ```bash
 npm run start
 ```
 ## Open frontend http://localhost:3000/
-## Default backend port is `8081`. Default frontend port is `3000`.
-### You can set ports in `.env` file.
+## Default backend port is `8080`. Default frontend port is `3000`.
+### You can set ports in `.env` file. Rename `.env.default` to `.env` and edit it.
 ```bash
-code .env
+mv .env.default .env && code .env
 ```
