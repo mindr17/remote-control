@@ -11,6 +11,10 @@ const startBack = (): void => {
   const wss = new WebSocketServer({ port: Number(BACK_PORT) });
   console.log(`Hello! Websocket server has started on port ${BACK_PORT}!`);
   
+  wss.on('headers', (headers: string[]) => {
+    console.log(headers);
+  });
+
   wss.on('connection', async (ws) => {
     const duplex = createWebSocketStream(ws, { 
       encoding: 'utf8',
